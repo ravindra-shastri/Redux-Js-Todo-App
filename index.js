@@ -11,14 +11,15 @@ const reducer = (state = [], { type, value }) => {
         i !== value);
 
     case "isDone":
-      return state.filter((e, i) => {
-        console.log(e)
-        if (e === value) {
-          // console.log(value);
-          return e.isDone("isDone", isDone => !isDone);
-        }
-        return e;
-      });
+      state.map((todo, index) =>
+        value === index
+          ? { ...todo, isDone: !todo.isDone }
+          : todo)
+      return state.map((todo, index) =>
+        value === index
+          ? { ...todo, isDone: !todo.isDone }
+          : todo);
+
     default:
       return state;
   }
