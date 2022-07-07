@@ -7,14 +7,9 @@ const reducer = (state = [], { type, value }) => {
       return [...state, value];
 
     case "delete":
-      return state.filter((e, i) =>
-        i !== value);
+      return state.filter((e, i) => i !== value);
 
     case "isDone":
-      state.map((todo, index) =>
-        value === index
-          ? { ...todo, isDone: !todo.isDone }
-          : todo)
       return state.map((todo, index) =>
         value === index
           ? { ...todo, isDone: !todo.isDone }
